@@ -61,7 +61,12 @@ class ToDoListController: UITableViewController {
   }
   
   func deleteItem(_ item: ToDoItem) {
-    item.delete()
+    if item.isCompleted == true {
+      item.delete()
+    } else {
+      userAlert("Task is not completed!")
+    }
+    
   }
   
   func editTextItem(_ item: ToDoItem) {
@@ -102,7 +107,7 @@ extension ToDoListController {
 
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     guard let item = items?[indexPath.row],
-          editingStyle == .delete, item.isCompleted == true else { return }
+          editingStyle == .delete else { return }
     self.deleteItem(item)
 
   }

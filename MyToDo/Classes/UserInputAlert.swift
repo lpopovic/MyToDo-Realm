@@ -28,3 +28,12 @@ func userInputAlert(_ title: String, isSecure: Bool = false, text: String? = nil
   root?.present(alert, animated: true, completion: nil)
 }
 
+func userAlert(_ message: String) {
+  let alert = UIAlertController(title: "Alert", message: message, preferredStyle: .alert)
+ 
+  alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+  let root = UIApplication.shared.keyWindow?.rootViewController
+  root?.present(alert, animated: true, completion: nil)
+}
+
